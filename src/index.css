@@ -2,9 +2,6 @@
 
 
 :root {
-  /* Layout */
-  --mobile-width: 375px;
-  --desktop-width: 1440px;
 
   /* Typography */
   --font-family: 'League Spartan', sans-serif;
@@ -62,4 +59,46 @@
   --theme3-text-yellow: hsl(52, 100%, 62%);
   --theme3-text-blue: hsl(198, 20%, 13%);
   --theme3-text-light: hsl(0, 100%, 100%);
+}
+
+.calculator-theme-1 {
+  --calculator-background: var(--theme1-main-bg);
+  --calculator-toggle-background: var(--theme1-toggle-bg);
+  --calculator-display-background: var(--theme1-screen-bg);
+  --calculator-key-background: var(--theme1-key-light-bg);
+  --calculator-key-shadow: var(--theme1-key-light-shadow);
+  --calculator-key-text: var(--theme1-text-dark);
+  --calculator-action-background: var(--theme1-key-blue-bg);
+  --calculator-action-shadow: var(--theme1-key-blue-shadow);
+  --calculator-equals-background: var(--theme1-key-red-bg);
+  --calculator-equals-shadow: var(--theme1-key-red-shadow);
+  --calculator-text: var(--theme1-text-light);
+}
+
+.calculator-theme-2 {
+  --calculator-background: var(--theme2-main-bg);
+  --calculator-toggle-background: var(--theme2-toggle-bg);
+  --calculator-display-background: var(--theme2-screen-bg);
+  --calculator-key-background: var(--theme2-key-light-bg);
+  --calculator-key-shadow: var(--theme2-key-light-shadow);
+  --calculator-key-text: var(--theme2-text-dark);
+  --calculator-action-background: var(--theme2-key-cyan-bg);
+  --calculator-action-shadow: var(--theme2-key-cyan-shadow);
+  --calculator-equals-background: var(--theme2-key-orange-bg);
+  --calculator-equals-shadow: var(--theme2-key-orange-shadow);
+  --calculator-text: var(--theme2-text-dark);
+}
+
+.calculator-theme-3 {
+  --calculator-background: var(--theme3-main-bg);
+  --calculator-toggle-background: var(--theme3-toggle-bg);
+  --calculator-display-background: var(--theme3-screen-bg);
+  --calculator-key-background: var(--theme3-key-violet-bg);
+  --calculator-key-shadow: var(--theme3-key-violet-shadow);
+  --calculator-key-text: var(--theme3-text-yellow);
+  --calculator-action-background: var(--theme3-key-purple-bg);
+  --calculator-action-shadow: var(--theme3-key-purple-shadow);
+  --calculator-equals-background: var(--theme3-key-cyan-bg);
+  --calculator-equals-shadow: var(--theme3-key-cyan-shadow);
+  --calculator-text: var(--theme3-text-yellow);
 }

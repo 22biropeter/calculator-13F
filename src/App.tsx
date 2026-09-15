@@ -1,8 +1,12 @@
-import React from 'react'
+import ThemeContextProvider from './context/ThemeContextProvider'
+import Calculator from './components/Calculator'
+import './App.css'
 
 const App = () => {
   return (
-    <div>App</div>
+    <ThemeContextProvider>
+      <Calculator />
+    </ThemeContextProvider>
   )
 }
 

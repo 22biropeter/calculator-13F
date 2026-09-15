@@ -1,0 +1,23 @@
+.app {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    background-color: var(--calculator-background);
+    color: var(--calculator-text);
+    transition: background-color 200ms ease-in-out, color 200ms ease-in-out;
+}
+
+.calculator {
+    width: min(92vw, 540px);
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+    gap: 20px;
+}
+
+@media (max-width: 480px) {
+    .calculator {
+        width: min(92vw, 400px);
+        gap: 16px;
+    }
+}

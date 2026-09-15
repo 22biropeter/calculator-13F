@@ -1,0 +1,18 @@
+.switch{
+    width: 90px;
+    height: 30px;
+    background-color: var(--calculator-toggle-background);
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;     
+    padding: 5px;
+    border-radius: 20px;
+}
+
+.ball{
+    width: 20px;
+    height: 20px;
+    background-color: var(--calculator-equals-background);
+    border-radius: 50%;
+    transition: transform 250ms ease-in-out;
+}
