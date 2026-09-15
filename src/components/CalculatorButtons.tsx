@@ -32,8 +32,7 @@ const CalculatorButtons = () => {
       NumpadDivide: '/',
       NumpadEnter: '﹦',
       Backspace: 'DEL',
-      Delete: 'DEL',
-      Escape: 'RESET',
+      Delete: 'RESET',
     }
 
     const handleKeyDown = (event: KeyboardEvent) => {
