@@ -22,7 +22,7 @@
 
         &:active {
             transform: translateY(4px);
-            box-shadow: 0 0 0 var(--calculator-key-shadow);
+            box-shadow: 0 0 0;
         }
     }
     .reset {
