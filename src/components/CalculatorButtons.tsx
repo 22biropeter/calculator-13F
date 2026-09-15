@@ -16,7 +16,7 @@ const CalculatorButtons = () => {
           key={label}
           className={`${styles.button}  
             ${label === 'RESET' ? styles.reset : ''}                            
-            ${label === '﹦' ? styles.equles : ''}                            
+            ${label === '﹦' ? styles.equals : ''}                            
             ${label === 'DEL' ? styles.delete : ''}`}
         >
           {label}

@@ -22,7 +22,7 @@
 
         &:active {
             transform: translateY(4px);
-            box-shadow: 0 0 0;
+            box-shadow: 0 0 0 var(--calculator-key-shadow);
         }
     }
     .reset {
@@ -30,17 +30,27 @@
         background-color: var(--calculator-action-background);
         box-shadow: 0 4px 0 var(--calculator-action-shadow);
         color: var(--calculator-text);
+
+        &:active {
+            box-shadow: 0 4 0 var(--calculator-action-shadow);
+        }
     }
-    .equles{
+    .equals {
         grid-column: span 2;
         background-color: var(--calculator-equals-background);
         box-shadow: 0 4px 0 var(--calculator-equals-shadow);
         color: var(--calculator-text);
+        &:active {
+            box-shadow: 0 4 0 var(--calculator-equals-shadow);
+        }
     }
     .delete{
         background-color: var(--calculator-action-background);
         box-shadow: 0 4px 0 var(--calculator-action-shadow);
         color: var(--calculator-text);
+        &:active {
+            box-shadow: 0 4 0 var(--calculator-action-shadow);
+        }
     }
 }
 
