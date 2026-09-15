@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react'
 import styles from './CalculatorButtons.module.css'
 
 const buttons = [
@@ -9,15 +10,69 @@ const buttons = [
 ]
 
 const CalculatorButtons = () => {
+  const buttonRefs = useRef<Record<string, HTMLButtonElement | null>>({})
+  const [pressedButton, setPressedButton] = useState<string | null>(null)
+
+  useEffect(() => {
+    const keyToButton: Record<string, string> = {
+      Numpad0: '0',
+      Numpad1: '1',
+      Numpad2: '2',
+      Numpad3: '3',
+      Numpad4: '4',
+      Numpad5: '5',
+      Numpad6: '6',
+      Numpad7: '7',
+      Numpad8: '8',
+      Numpad9: '9',
+      NumpadDecimal: '.',
+      NumpadAdd: '+',
+      NumpadSubtract: '-',
+      NumpadMultiply: 'x',
+      NumpadDivide: '/',
+      NumpadEnter: '﹦',
+      Backspace: 'DEL',
+      Delete: 'DEL',
+      Escape: 'RESET',
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      const buttonLabel = keyToButton[event.code]
+      if (!buttonLabel || event.repeat) return
+
+      event.preventDefault()
+      setPressedButton(buttonLabel)
+      buttonRefs.current[buttonLabel]?.click()
+    }
+
+    const handleKeyUp = (event: KeyboardEvent) => {
+      if (keyToButton[event.code]) {
+        setPressedButton(null)
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    window.addEventListener('keyup', handleKeyUp)
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown)
+      window.removeEventListener('keyup', handleKeyUp)
+    }
+  }, [])
+
   return (
     <div className={styles.buttons}>
       {buttons.map((label) => (
         <button
           key={label}
+          ref={(button) => {
+            buttonRefs.current[label] = button
+          }}
           className={`${styles.button}  
             ${label === 'RESET' ? styles.reset : ''}                            
             ${label === '﹦' ? styles.equals : ''}                            
             ${label === 'DEL' ? styles.delete : ''}`}
+          data-key-active={pressedButton === label || undefined}
         >
           {label}
         </button>
