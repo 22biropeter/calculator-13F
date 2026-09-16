@@ -1,6 +1,6 @@
 import React, { createContext, useState } from "react"
 
-export type Operator = "+" | "-" | "x" | "/" | null
+export type Operator = "+" | "-" | "x" | "÷" | null
 
 type CalculationType = {
     result: number|null,
@@ -25,6 +25,7 @@ const CalculationContextProvider = ({children}:{children: React.ReactNode}) => {
     })
 
     function setOperator(_operator:Operator){
+        if (calculation.current == "" && calculation.result == null) return
         if (calculation.result == null){
             setCalculation(
                 {result: Number.parseFloat(calculation.current),
@@ -79,15 +80,13 @@ const CalculationContextProvider = ({children}:{children: React.ReactNode}) => {
             case "x":
                 _result = _result*_current
                 break
-            case "/":
+            case "÷":
                 _result = _result/_current
         }
-        console.log(_current)
-        console.log(_result)
 
         setCalculation({
             operator: null,
-            result: _result,
+            result: Number.parseFloat(_result.toFixed(5)),
             current: ""
         })
     }

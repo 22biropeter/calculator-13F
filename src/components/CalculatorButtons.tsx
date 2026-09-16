@@ -7,7 +7,7 @@ const buttons = [
   '7', '8', '9', 'DEL',
   '4', '5', '6', '+',
   '1', '2', '3', '-',
-  '.', '0', '/', 'x',
+  '.', '0', '÷', 'x',
   'RESET', '﹦',
 ]
 
@@ -33,7 +33,7 @@ const CalculatorButtons = () => {
       NumpadAdd: '+',
       NumpadSubtract: '-',
       NumpadMultiply: 'x',
-      NumpadDivide: '/',
+      NumpadDivide: '÷',
       NumpadEnter: '﹦',
       Backspace: 'DEL',
       Delete: 'RESET',

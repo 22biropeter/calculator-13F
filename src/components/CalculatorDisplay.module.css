@@ -16,8 +16,12 @@
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
+        align-items: end;
         height: 100%;
+        max-width: 85%;
         .res{
+            max-width: 100%;
+            overflow: hidden;
             display: flex;
             align-items: flex-end;
             justify-content: flex-end;
@@ -25,8 +29,11 @@
             min-height: 50%;
             text-align: right;
             margin-top: auto;
+            
         }
         .curr{
+            max-width: 100%;
+            overflow: hidden;
             min-height: 50%;
             display: flex;
             align-items: flex-end;
