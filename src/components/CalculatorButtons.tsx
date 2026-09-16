@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import styles from './CalculatorButtons.module.css'
+import { useCalculation } from '../context/CalculationContextProvider'
+import type {Operator} from '../context/CalculationContextProvider'
 
 const buttons = [
   '7', '8', '9', 'DEL',
@@ -12,6 +14,8 @@ const buttons = [
 const CalculatorButtons = () => {
   const buttonRefs = useRef<Record<string, HTMLButtonElement | null>>({})
   const [pressedButton, setPressedButton] = useState<string | null>(null)
+
+  const calculation = useCalculation()
 
   useEffect(() => {
     const keyToButton: Record<string, string> = {
@@ -59,10 +63,36 @@ const CalculatorButtons = () => {
     }
   }, [])
 
+  const HandleClick = (_label: string) => {
+    if (_label in ["0","1","2","3","4","5","6","7","8","9"]){
+      calculation.setCurrent(calculation.calculation.current+_label)
+    }
+    else{
+      switch(_label){
+        case ".": 
+          calculation.setCurrent(calculation.calculation.current+_label)
+          break
+        case "DEL": 
+          const newValue = calculation.calculation.current.slice(0, -1);
+          calculation.setCurrent(newValue);
+          break
+        case "﹦": 
+          calculation.doCalculate()
+          break
+        case "RESET": 
+          calculation.doReset()
+          break
+        default:
+          calculation.setOperator(_label as Operator)
+      }
+    }
+  }
+
   return (
     <div className={styles.buttons}>
       {buttons.map((label) => (
         <button
+          onClick={() => HandleClick(label)}
           key={label}
           ref={(button) => {
             buttonRefs.current[label] = button

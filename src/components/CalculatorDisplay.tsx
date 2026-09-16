@@ -1,3 +1,4 @@
+import { useCalculation } from '../context/CalculationContextProvider'
 import styles from './CalculatorDisplay.module.css'
 
 type CalculatorDisplayProps = {
@@ -5,9 +6,11 @@ type CalculatorDisplayProps = {
 }
 
 const CalculatorDisplay = ({ value = '0' }: CalculatorDisplayProps) => {
+  const calculation = useCalculation()
+
   return (
     <output className={styles.display} aria-label="Calculator display">
-      {value}
+      {calculation.calculation.current}
     </output>
   )
 }
