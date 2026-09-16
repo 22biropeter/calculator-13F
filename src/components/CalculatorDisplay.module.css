@@ -1,14 +1,40 @@
 .display {
-    min-height: 100px;
+    min-height: 150px;
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    padding: 24px;
+    padding: 10px;
     overflow: hidden;
     border-radius: 10px;
     background-color: var(--calculator-display-background);
     color: var(--calculator-text);
-    font-size: clamp(2.5rem, 8vw, 4rem);
+    font-size: 4.2rem;
     font-weight: var(--font-weight-bold);
     transition: background-color 200ms ease-in-out, color 200ms ease-in-out;
+
+    .numbers{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        height: 100%;
+        .res{
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+            font-size: 3rem;
+            min-height: 50%;
+            text-align: right;
+            margin-top: auto;
+        }
+        .curr{
+            min-height: 50%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+            transform-origin: bottom right;
+        }
+    }
+    .operator{
+        min-width: 10%;
+    }
 }

@@ -1,9 +1,9 @@
 import React, { createContext, useState } from "react"
 
-export type Operator = "plus" | "minus" | "multiply" | "divide" | null
+export type Operator = "+" | "-" | "x" | "/" | null
 
 type CalculationType = {
-    result: number,
+    result: number|null,
     operator: Operator|null,
     current: string
 }
@@ -19,21 +19,29 @@ const CalculationContext = createContext<CalculationContextType|undefined>(undef
 
 const CalculationContextProvider = ({children}:{children: React.ReactNode}) => {
     const [calculation, setCalculation] = useState<CalculationType>({
-        result: 0,
+        result: null,
         operator: null,
         current: "",
     })
 
     function setOperator(_operator:Operator){
-        setCalculation(
-            {result: calculation.result,
-            operator: _operator,
-            current: calculation.current
-        })
+        if (calculation.result == null){
+            setCalculation(
+                {result: Number.parseFloat(calculation.current),
+                operator: _operator,
+                current: ""
+            })
+        }else{
+            setCalculation(
+                {result: calculation.result,
+                operator: _operator,
+                current: calculation.current
+            })
+        }
+        
     }
 
     function setCurrent(_current: string){
-        if (_current == "") _current = "0"
         setCalculation(
             {result: calculation.result,
             operator: calculation.operator,
@@ -43,45 +51,50 @@ const CalculationContextProvider = ({children}:{children: React.ReactNode}) => {
 
     function doReset(){
         setCalculation({
-            result: 0,
+            result: null,
             current: "",
             operator: null
           })
     }
 
     function doCalculate(){
-        let _resoult: number|null = calculation.result
+        let _result: number|null = calculation.result
         let _current: number
+
+        if (_result == null) {_result = 0} 
         if (calculation.current == "")
             {_current = 0} 
         else {_current = Number.parseFloat(calculation.current)}
 
         switch(calculation.operator){
             case null:
+                
                 return
-            case "plus":
-                _resoult = _resoult+_current
+            case "+":
+                _result = _result+_current
                 break
-            case "minus":
-                _resoult = _resoult-_current
+            case "-":
+                _result = _result-_current
                 break
-            case "multiply":
-                _resoult = _resoult*_current
+            case "x":
+                _result = _result*_current
                 break
-            case "divide":
-                _resoult = _resoult/_current
+            case "/":
+                _result = _result/_current
         }
+        console.log(_current)
+        console.log(_result)
 
         setCalculation({
             operator: null,
-            result: _resoult,
+            result: _result,
             current: ""
         })
     }
     return(
-        <CalculationContext value={{calculation,setOperator,setCurrent,doCalculate,doReset}}>
+        <CalculationContext.Provider value={{calculation,setOperator,setCurrent,doCalculate,doReset}}>
             {children}
-        </CalculationContext>
+        </CalculationContext.Provider>
     )
 }
 export default CalculationContextProvider
